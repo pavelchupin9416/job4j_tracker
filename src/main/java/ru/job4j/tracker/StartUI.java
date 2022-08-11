@@ -7,18 +7,20 @@ import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.store.MemTracker;
+import ru.job4j.tracker.store.SqlTracker;
+import ru.job4j.tracker.store.Store;
 
 import java.util.List;
 
 public class StartUI {
 
-    public void init(Input input, MemTracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store store, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
             int select = input.askInt("Enter select: ");
             UserAction action = actions.get(select);
-            run = action.execute(input, tracker);
+            run = action.execute(input, store);
         }
     }
 
@@ -44,7 +46,9 @@ public class StartUI {
                 new FindByNameAction(output),
                 new ExitAction()
         );
-        MemTracker tracker = new MemTracker();
-        new StartUI().init(validate, tracker, actions);
+        SqlTracker store = new SqlTracker();
+        store.init();
+        //MemTracker tracker = new MemTracker();
+        new StartUI().init(validate, store, actions);
     }
 }
