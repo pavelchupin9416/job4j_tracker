@@ -48,7 +48,6 @@ public class StartUI {
         );
         SqlTracker store = new SqlTracker();
         store.init();
-        //MemTracker tracker = new MemTracker();
         new StartUI().init(validate, store, actions);
     }
 }
