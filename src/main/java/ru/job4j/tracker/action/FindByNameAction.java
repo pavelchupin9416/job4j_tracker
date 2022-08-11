@@ -29,8 +29,7 @@ public class FindByNameAction implements UserAction {
             for (Item item: items) {
             out.println(item);
             }
-        } else
-        {
+        } else {
             out.println("item mot found");
         }
         return true;
