@@ -46,8 +46,11 @@ public class StartUI {
                 new FindByNameAction(output),
                 new ExitAction()
         );
-        SqlTracker store = new SqlTracker();
-        store.init();
-        new StartUI().init(validate, store, actions);
+        try (SqlTracker store = new SqlTracker()){
+            store.init();
+            new StartUI().init(validate, store, actions);
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
