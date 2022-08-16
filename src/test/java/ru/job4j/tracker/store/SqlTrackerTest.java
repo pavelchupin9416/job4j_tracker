@@ -109,6 +109,6 @@ public class SqlTrackerTest {
         Item four = tracker.add(new Item("Second"));
         Item five = tracker.add(new Item("First"));
         List<Item> result = tracker.findByName(second.getName());
-        MatcherAssert.assertThat(result, is(List.of(second,four)));
+        MatcherAssert.assertThat(result, is(List.of(second, four)));
     }
 }
