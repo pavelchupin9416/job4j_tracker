@@ -1,6 +1,8 @@
 package ru.job4j.tracker.input;
 
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import static org.hamcrest.MatcherAssert.assertThat;
