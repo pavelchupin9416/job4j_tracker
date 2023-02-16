@@ -1,26 +1,5 @@
 package ru.job4j.tracker.store;
 
-/*
-import org.hamcrest.core.IsNull;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.model.Item;
-
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Properties;*/
-
-//import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
-import org.hamcrest.core.IsNull;
 import org.junit.jupiter.api.*;
 import ru.job4j.tracker.model.Item;
 
@@ -30,7 +9,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -76,13 +54,6 @@ public class SqlTrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
     }
-
-  /*  @Test
-    public void whenSaveItemAndFindByGeneratedIdThenMustBeTheSame() {
-        SqlTracker tracker = new SqlTracker(connection);
-        Item item = tracker.add(new Item("item"));
-        assertThat(tracker.findById(item.getId()), is(item));
-    }*/
 
 
     @Test
