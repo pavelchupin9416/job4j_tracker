@@ -5,6 +5,7 @@ import org.hamcrest.core.IsNull;
 import org.junit.*;
 import ru.job4j.tracker.model.Item;
 
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,7 +24,7 @@ public class SqlTrackerTest {
 
     @BeforeClass
     public static void initConnection() {
-        try (InputStream in = SqlTrackerTest.class.getClassLoader().getResourceAsStream("test.properties")) {
+        try (InputStream in = new FileInputStream("db/liquibase.properties")) {
             Properties config = new Properties();
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));

@@ -43,6 +43,7 @@ public class SqlTracker implements Store, AutoCloseable {
     public void close() throws Exception {
         if (cn != null) {
             cn.close();
+            System.out.println("Closing!");
         }
     }
 
