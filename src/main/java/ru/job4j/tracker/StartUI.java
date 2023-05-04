@@ -45,13 +45,18 @@ public class StartUI {
                 new FindAllAction(output),
                 new FindByIdAction(output),
                 new FindByNameAction(output),
-                new ExitAction()
+                new ExitAction(),
+                new CreateManyItems(output),
+                new DeleteAllItems(output)
         );
-        try (SqlTracker store = new SqlTracker()) {
+
+        MemTracker tracker = new MemTracker();
+        new StartUI().init(validate, tracker, actions);
+        /*try (SqlTracker store = new SqlTracker()) {
             store.init();
             new StartUI().init(validate, store, actions);
         }  catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }
