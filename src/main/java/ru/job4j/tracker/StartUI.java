@@ -7,9 +7,8 @@ import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.store.MemTracker;
-import ru.job4j.tracker.store.SqlTracker;
 import ru.job4j.tracker.store.Store;
-import java.sql.Connection;
+
 
 import java.util.List;
 
@@ -52,11 +51,5 @@ public class StartUI {
 
         MemTracker tracker = new MemTracker();
         new StartUI().init(validate, tracker, actions);
-        /*try (SqlTracker store = new SqlTracker()) {
-            store.init();
-            new StartUI().init(validate, store, actions);
-        }  catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 }

@@ -62,7 +62,7 @@ public class SqlTrackerTest {
         Item first = tracker.add(new Item("first"));
         int id = first.getId();
         tracker.delete(id);
-        assertThat(tracker.findById(id)).isEqualTo(null);
+        assertThat(tracker.findById(id)).isNull();
     }
 
 
