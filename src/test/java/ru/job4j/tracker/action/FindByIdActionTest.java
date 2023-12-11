@@ -28,7 +28,7 @@ public class FindByIdActionTest {
         find.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("id: 0 name: item test" + ln));
+        assertThat(out.toString(), is("id: 0 name: item test" + ln));
     }
 
     @Test
@@ -45,6 +45,6 @@ public class FindByIdActionTest {
         find.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("Wrong id! Not found" + ln));
+        assertThat(out.toString(), is("Wrong id! Not found" + ln));
     }
 }

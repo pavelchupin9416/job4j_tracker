@@ -32,7 +32,7 @@ public class ReplaceActionTest {
         rep.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("Item is successfully replaced!" + ln));
+        assertThat(out.toString(), is("Item is successfully replaced!" + ln));
     }
 
     @Test
@@ -51,6 +51,6 @@ public class ReplaceActionTest {
         rep.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("Wrong id!" + ln));
+        assertThat(out.toString(), is("Wrong id!" + ln));
     }
 }

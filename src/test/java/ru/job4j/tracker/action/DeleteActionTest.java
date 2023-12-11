@@ -19,16 +19,15 @@ public class DeleteActionTest {
         Output out = new StubOutput();
         MemTracker tracker = new MemTracker();
         tracker.add(new Item("item"));
-        DeleteAction del= new DeleteAction(out);
+        DeleteAction del = new DeleteAction(out);
 
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(0);
-        /*  when(input.askStr(any(String.class))).thenReturn(replacedName);*/
 
         del.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("Item is successfully deleted!" + ln));
+        assertThat(out.toString(), is("Item is successfully deleted!" + ln));
     }
 
     @Test
@@ -36,7 +35,7 @@ public class DeleteActionTest {
         Output out = new StubOutput();
         MemTracker tracker = new MemTracker();
         tracker.add(new Item("item"));
-        DeleteAction del= new DeleteAction(out);
+        DeleteAction del = new DeleteAction(out);
 
         Input input = mock(Input.class);
         when(input.askInt(any(String.class))).thenReturn(1);
@@ -44,6 +43,6 @@ public class DeleteActionTest {
         del.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("Wrong id!" + ln));
+        assertThat(out.toString(), is("Wrong id!" + ln));
     }
 }

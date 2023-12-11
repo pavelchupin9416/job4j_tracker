@@ -29,7 +29,7 @@ public class FindByNameActionTest {
         find.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("id: 0 name: item test" + ln));
+        assertThat(out.toString(), is("id: 0 name: item test" + ln));
     }
 
     @Test
@@ -46,6 +46,6 @@ public class FindByNameActionTest {
         find.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        assertThat(out.toString(),is("item mot found" + ln));
+        assertThat(out.toString(), is("item mot found" + ln));
     }
 }
