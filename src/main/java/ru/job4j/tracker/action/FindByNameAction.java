@@ -27,7 +27,7 @@ public class FindByNameAction implements UserAction {
         List<Item> items = store.findByName(name);
         if (items.size() > 0) {
             for (Item item: items) {
-            out.println(item);
+            out.println("id: " + item.getId() + " name: " + item.getName());
             }
         } else {
             out.println("item mot found");
