@@ -25,8 +25,9 @@ public class HbmTracker implements Store, AutoCloseable {
         session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
-        session.close();
         return item;
     }
 
@@ -45,8 +46,9 @@ public class HbmTracker implements Store, AutoCloseable {
             result = true;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
-        session.close();
         return result;
     }
 
@@ -64,34 +66,62 @@ public class HbmTracker implements Store, AutoCloseable {
             result = true;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
-        session.close();
         return result;
     }
 
     @Override
     public List<Item> findAll() {
         Session session = sf.openSession();
-        Query<Item> query = session.createQuery(
+        Query<Item> query = null;
+        try {
+            session.beginTransaction();
+            query = session.createQuery(
                 "from Item", Item.class);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        assert query != null;
         return query.getResultList();
     }
 
     @Override
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
-        Query<Item> query = session.createQuery(
+        Query<Item> query = null;
+        try {
+            session.beginTransaction();
+            query = session.createQuery(
                 "from Item i where  i.name = :name", Item.class);
         query.setParameter("name", key);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        assert query != null;
         return query.getResultList();
     }
 
     @Override
     public Item findById(int id) {
         Session session = sf.openSession();
-        Query<Item> query = session.createQuery(
+        Query<Item> query = null;
+        try {
+                session.beginTransaction();
+                query = session.createQuery(
                 "from Item i where  i.id = :id", Item.class);
         query.setParameter("id", id);
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+        assert query != null;
         return query.uniqueResult();
     }
 
