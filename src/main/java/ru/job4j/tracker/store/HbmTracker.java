@@ -85,7 +85,6 @@ public class HbmTracker implements Store, AutoCloseable {
         } finally {
             session.close();
         }
-        assert query != null;
         return query.getResultList();
     }
 
@@ -103,7 +102,6 @@ public class HbmTracker implements Store, AutoCloseable {
         } finally {
             session.close();
         }
-        assert query != null;
         return query.getResultList();
     }
 
@@ -121,7 +119,6 @@ public class HbmTracker implements Store, AutoCloseable {
         } finally {
             session.close();
         }
-        assert query != null;
         return query.uniqueResult();
     }
 
