@@ -16,7 +16,7 @@ public class HqlTrackerTest {
     @AfterEach
     public void wipeTable() throws SQLException {
         try (var tracker = new HbmTracker()) {
-           tracker.deleteAll();
+            tracker.deleteAll();
         }
     }
 
@@ -34,10 +34,10 @@ public class HqlTrackerTest {
     @Test
     public void whenDelete() {
         try (var tracker = new HbmTracker()) {
-        Item first = tracker.add(new Item("first"));
-        int id = first.getId();
-        tracker.delete(id);
-        assertThat(tracker.findById(id)).isNull();
+            Item first = tracker.add(new Item("first"));
+            int id = first.getId();
+            tracker.delete(id);
+            assertThat(tracker.findById(id)).isNull();
         }
     }
 
@@ -45,50 +45,50 @@ public class HqlTrackerTest {
     @Test
     public void whenReplace() {
         try (var tracker = new HbmTracker()) {
-        Item first = tracker.add(new Item("first"));
-        int id = first.getId();
-        Item second = new Item("second");
-        tracker.replace(id, second);
-        assertThat(tracker.findById(id).getName()).isEqualTo("second");
+            Item first = tracker.add(new Item("first"));
+            int id = first.getId();
+            Item second = new Item("second");
+            tracker.replace(id, second);
+            assertThat(tracker.findById(id).getName()).isEqualTo("second");
         }
     }
 
 
     @Test
     public void whenTestFindByNameCheckArrayLength() {
-            try (var tracker = new HbmTracker()) {
-        Item first = tracker.add(new Item("First"));
-        tracker.add(new Item("Second"));
-        tracker.add(new Item("First"));
-        tracker.add(new Item("Second"));
-        tracker.add(new Item("First"));
-        List<Item> result = tracker.findByName(first.getName());
-        assertThat(result.size()).isEqualTo(3);
-            }
+        try (var tracker = new HbmTracker()) {
+            Item first = tracker.add(new Item("First"));
+            tracker.add(new Item("Second"));
+            tracker.add(new Item("First"));
+            tracker.add(new Item("Second"));
+            tracker.add(new Item("First"));
+            List<Item> result = tracker.findByName(first.getName());
+            assertThat(result.size()).isEqualTo(3);
+        }
     }
 
 
     @Test
     public void whenTestFindAll() {
-                try (var tracker = new HbmTracker()) {
-                    Item first = tracker.add(new Item("First"));
-                    Item second = tracker.add(new Item("Second"));
-                    List<Item> result = tracker.findAll();
-                    assertThat(result).isEqualTo(List.of(first, second));
-                }
+        try (var tracker = new HbmTracker()) {
+            Item first = tracker.add(new Item("First"));
+            Item second = tracker.add(new Item("Second"));
+            List<Item> result = tracker.findAll();
+            assertThat(result).isEqualTo(List.of(first, second));
+        }
     }
 
 
     @Test
     public void whenTestFindByNameCheckSecondItemName() {
         try (var tracker = new HbmTracker()) {
-        Item first = tracker.add(new Item("First"));
-        Item second = tracker.add(new Item("Second"));
-        Item three = tracker.add(new Item("First"));
-        Item four = tracker.add(new Item("Second"));
-        Item five = tracker.add(new Item("First"));
-        List<Item> result = tracker.findByName(second.getName());
-        assertThat(result).isEqualTo(List.of(second, four));
+            Item first = tracker.add(new Item("First"));
+            Item second = tracker.add(new Item("Second"));
+            Item three = tracker.add(new Item("First"));
+            Item four = tracker.add(new Item("Second"));
+            Item five = tracker.add(new Item("First"));
+            List<Item> result = tracker.findByName(second.getName());
+            assertThat(result).isEqualTo(List.of(second, four));
         }
     }
 }
